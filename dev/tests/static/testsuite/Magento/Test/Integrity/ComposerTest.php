@@ -218,10 +218,11 @@ class ComposerTest extends \PHPUnit_Framework_TestCase
     private function assertConsistentModuleName(\SimpleXMLElement $xml, $packageName)
     {
         $moduleName = (string)$xml->module->attributes()->name;
+        $expectedName = $this->convertModuleToPackageName($moduleName);
         $this->assertEquals(
             $packageName,
-            $this->convertModuleToPackageName($moduleName),
-            "For the module '{$moduleName}', the expected package name is '{$packageName}'"
+            $expectedName,
+            "For the module '{$moduleName}', the expected package name is '{$expectedName}'"
         );
     }
 
